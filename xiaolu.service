@@ -1,0 +1,27 @@
+[Unit]
+#描述
+Description=xiaolu
+
+ 
+
+[Service]
+#后台运行
+Type=forking
+#进程id
+
+PIDFile=/run/xiaolu.pid
+
+#启动进程
+
+ExecStart=/opt/systemd-sh/test.sh 
+#重启进程
+ExecReload=/bin/kill -1 $MAINPID
+#杀死进程
+ExecStop=/bin/kill -9 $MAINPID
+
+ 
+
+[Install]
+#用户启动
+
+WantedBy=multi-user.target graphical.target
